@@ -1,8 +1,8 @@
 let cors = require('cors'),
-    loginRouter = require('./app/login/router'),
-    playersRouter = require('./app/players/router'),
-    teamsRouter = require('./app/teams/router'),
-    adminRouter = require('./app/admin/router');
+    loginRouter = require('./app/features//login/router'),
+    playersRouter = require('./app/features/players/router'),
+    teamsRouter = require('./app/features/teams/router'),
+    adminRouter = require('./app/features/admin/router');
 
 module.exports = (app, express) => {
 

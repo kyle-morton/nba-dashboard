@@ -1,9 +1,9 @@
 let User = require("../../shared/models/user"),
-    TokenHandler = require('../../shared/handlers/token'),
-    tokenHandler = new TokenHandler();
+    UserHandler = require('../../features/admin/handlers/user'),
+    userHandler = new UserHandler();
 
 
-module.exports = class UserHandler {
+module.exports = class RegistrationHandler {
 
     /**
      * Register a new user account
@@ -11,10 +11,12 @@ module.exports = class UserHandler {
      * @param {*} response 
      */
     async register(request, response) {
+
+      try {
         let userData = request.body;
 
         //find user
-        let userCheck = await this.findUser({
+        let userCheck = await userHandler.findUser({
           email: userData.email
         });
 
@@ -40,15 +42,12 @@ module.exports = class UserHandler {
             }
           });
         }
-    };
-    async getUsers() {
-      return await User.find({});
-    };
-    /**
-     * checks database for given user
-     * @param {*} filter 
-     */
-    async findUser(filter) {
-      return await User.findOne(filter);
+      }catch(ex) {
+        response.status(200).send({
+          message: 'Error occurred: ' + ex,
+          result: '0'
+        });
+      }
+
     };
 };

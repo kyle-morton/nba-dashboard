@@ -1,6 +1,6 @@
-let User = require('../shared/models/user'),
+let User = require('../../shared/models/user'),
     bcrypt = require('bcrypt'),
-    TokenHandler = require('../shared/handlers/token'),
+    TokenHandler = require('../../auth/handlers/token'),
     tokenHandler = new TokenHandler();
 
 module.exports = class LoginHandler {
