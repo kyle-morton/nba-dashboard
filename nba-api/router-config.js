@@ -1,7 +1,8 @@
 let cors = require('cors'),
-    loginRouter = require('./app/admin/login'),
+    loginRouter = require('./app/login/router'),
     playersRouter = require('./app/players/router'),
-    teamsRouter = require('./app/teams/router');
+    teamsRouter = require('./app/teams/router'),
+    adminRouter = require('./app/admin/router');
 
 module.exports = (app, express) => {
 
@@ -16,6 +17,7 @@ module.exports = (app, express) => {
     });
 
     app.use('/login', loginRouter);
+    app.use('/admin', adminRouter);
     app.use('/players', playersRouter);
     app.use('/teams', teamsRouter);
 
